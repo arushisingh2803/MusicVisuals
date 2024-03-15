@@ -3,6 +3,8 @@ package ie.tudublin;
 import processing.core.PApplet;
 import ddf.minim.*;
 import ddf.minim.analysis.FFT;
+import example.AudioBandsVisual;
+import example.WaveForm;
 
 public abstract class Visual extends PApplet
 {
@@ -33,6 +35,15 @@ public abstract class Visual extends PApplet
   		smoothedBands = new float[bands.length];
 
 	}
+	
+	public void setup() {
+        startMinim();
+
+        // Call loadAudio to load an audio file to process
+        loadAudio("java/data/meetmehalfway.mp3");
+
+
+    }
 
 	float log2(float f) {
 		return log(f) / log(2.0f);
