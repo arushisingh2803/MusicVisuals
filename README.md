@@ -1,8 +1,14 @@
 # Music Visualiser Project
 
-Name:
+Name: 
+Arushi Singh
+Jenaid Sayago
+Tania Satavalekar.
 
 Student Number: 
+C22359751
+C22380473
+C21331753
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
