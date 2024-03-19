@@ -18,9 +18,10 @@ C21331753
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
+We chose the song "Meet Me Halfway" by the Black-Eyed Peas because we felt as though it was a nice song to use, had a variety of beats with both slow and intense parts along with rap and a consistent beat. We also really liked the cover art for the 2009 album, "The End" which depicts a green skull. We thought it would be really interesting to implement and combine with the song along with other visuals.
 
 # Instructions
-
+Press SPACEBAR to run the code.
 # How it works
 
 # What I am most proud of in the assignment
