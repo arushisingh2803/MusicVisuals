@@ -2,7 +2,7 @@
 
 Name: 
 Arushi Singh
-Jenaid Sayago
+Jenied Sayago
 Tania Satavalekar.
 
 Student Number: 
