@@ -2,14 +2,14 @@ package c22359751;
 
 import ie.tudublin.Visual;
 
+
 public class ArushiVisual1 extends Visual
-{
+{ 
 
     public void settings()
     {
-        size(800, 800, P3D);
         println("CWD: " + System.getProperty("user.dir"));
-        //fullScreen(P3D, SPAN);
+        fullScreen(P3D, SPAN);
     }
 
     public void keyPressed()
@@ -25,10 +25,7 @@ public class ArushiVisual1 extends Visual
     public void setup()
     {
         colorMode(HSB);
-        noCursor();
-        
         setFrameSize(256);
-
         startMinim();
         loadAudio("java/data/meetmehalfway.mp3");     
     }
@@ -45,21 +42,24 @@ public class ArushiVisual1 extends Visual
         translate(0, 0, -250);
 
         float scale = 0.3f; 
-        
+        float[] bands = getSmoothedBands();
+
+        //waves on the x-axis
         noFill();
-        for (int i = 0; i < 10; i++) { // Number of waves
-            float waveX = i * 20 + frameCount * getSmoothedAmplitude(); // Adjust speed of waves
-            stroke(hue, 80, 80); 
+        for (int i = 0; i < 4; i++) { // Number of waves
+            float waveX = i * 20 + frameCount * bands.length; // Adjust speed of waves
+            stroke(360); 
             beginShape();
             for (float x = -150; x < 150; x += 2) {
-                float y = sin(x * getSmoothedAmplitude() + waveX) * 10 * sin(frameCount * getSmoothedAmplitude()); // Adjust amplitude and frequency
-                vertex(x, y);
+                float y = sin(x * bands.length + waveX) * 10 * sin(frameCount * bands.length); // Adjust amplitude and frequency
+                vertex(x, y, -10);
             }
             endShape();
         }
 
+        //waves on the y-axis
         noFill();
-        for (int i = 0; i < 10; i++) { // Number of waves
+        for (int i = 0; i < 2; i++) { // Number of waves
             float waveY = i * 20 + frameCount * getSmoothedAmplitude(); // Adjust speed of waves
             stroke(hue, 80, 80);
             beginShape();
@@ -70,8 +70,18 @@ public class ArushiVisual1 extends Visual
             endShape();
         }
 
+        //function to draw the heart
+        drawHeart(scale);
+
+    } 
+
+
+    private void drawHeart(float scale) {
+
+        float hue = frameCount % 360;
         stroke(hue, 80, 80);
         fill(hue, 80, 80);
+        
 
         //first half of the heart
         beginShape();
@@ -79,26 +89,25 @@ public class ArushiVisual1 extends Visual
             float r = 15;
             float x = r * 16 * pow(sin(a), 3) * scale + (map(getSmoothedAmplitude(), 0, 1, 0, 255));
             float y = -r*(13 * cos(a) - 5*cos(2*a) - 2*cos(3*a) - cos(4*a)) * scale;
-            vertex (x, y);
+            vertex (x, y, -5);
         }
         endShape ();
 
-        //second half of the heart
+        // Draw second half of the heart
         beginShape();
         for (float a = 0; a < PI; a += 0.01) {
             float r = 15;
             float x = -r * 16 * pow(sin(a), 3) * scale - (map(getSmoothedAmplitude(), 0, 1, 0, 255));
-            float y = -r*(13 * cos(a) - 5*cos(2*a) - 2*cos(3*a) - cos(4*a)) * scale;
-            vertex (x, y);
+            float y = -r * (13 * cos(a) - 5 * cos(2 * a) - 2 * cos(3 * a) - cos(4 * a)) * scale;
+            vertex(x, y, -5);
         }
-        
-        endShape ();
+        endShape();
+    }
 
-        
-    } 
-        
-}     
+    
+}           
 
             
+
 
 
