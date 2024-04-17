@@ -108,6 +108,12 @@ public class JeniedVisual1 extends Visual {
         // Draw the main sphere
         sphere(sphereSize);
 
+        // Draw beat visualiser
+        float smallSphereSize = map(amplitude, 0, 1, 0, 800); // Map amplitude to small sphere size
+        fill(frameCount % 360, 80, 100); 
+        noStroke(); 
+        sphere(smallSphereSize); 
+
         // Calculate the position of the 2nd sphere
         float circleRadius = 300; 
         float circleX1 = width / 5; 
