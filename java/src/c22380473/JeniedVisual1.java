@@ -69,8 +69,60 @@ public class JeniedVisual1 extends Visual {
 
         prevAmplitude = amplitude;
 
+         
+        // Draw the sphere
+        drawSphere();
+
     }
 
-    
+    void drawSphere() {
+        // Calculate the amplitude of the audio signal
+        float amplitude = getSmoothedAmplitude();
+
+        sphereSize = constrain(sphereSize, 190, 200); 
+
+        // Rotate the centre sphere based on the amplitude 
+        float rotationSpeed = map(amplitude, 0, 1, 0, TWO_PI);
+        rotationSpeed *= -0.1; 
+        angle += rotationSpeed; 
+
+        // Draw the centre sphere in middle of canvas
+        pushMatrix();
+        translate(width / 2, height / 2, 0);
+        rotateY(angle); // Rotate around the y-axis
+        noFill();
+        stroke(frameCount % 360, 80, 100); 
+
+        // Draw the main sphere
+        sphere(sphereSize);
+
+        // Calculate the position of the 2nd sphere
+        float circleRadius = 300; 
+        float circleX1 = width / 5; 
+        float circleY1 = height / 2 - 500; 
+        float circleZ1 = 0;
+ 
+        // Draw the 2nd sphere
+        pushMatrix();
+        translate(circleX1, circleY1, circleZ1); 
+        rotateX(angle); 
+        sphere(50); 
+
+        // Calculate the position of the spinning sphere relative to the centre sphere
+        float spinRadius = 150; // orbit
+        float spinX = spinRadius; 
+        float spinY = 0; 
+
+        // Draw the 3rd spinning sphere
+        pushMatrix();
+        translate(spinX, spinY, 0); 
+        rotateX(angle); 
+        sphere(30); 
+ 
+        popMatrix();
+        popMatrix();
+        popMatrix(); // Restore original transformation
+    }
+
 
 }
