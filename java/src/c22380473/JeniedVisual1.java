@@ -93,6 +93,18 @@ public class JeniedVisual1 extends Visual {
         noFill();
         stroke(frameCount % 360, 80, 100); 
 
+        // Draw a ring to 2nd planet
+        float mainRingRadius = 450; 
+        float mainRingThickness = 8; 
+        rotateX(angle); 
+        ellipse(0, 0, mainRingRadius * 2, mainRingRadius * 2); // Draw ring
+
+        // Draw a ring to 3rd planet
+        float mainRingRadius2 = 312; 
+        float mainRingThickness2 = 8; 
+        rotateX(angle); 
+        ellipse(0, 0, mainRingRadius2 * 2, mainRingRadius2 * 2); // Draw ring
+
         // Draw the main sphere
         sphere(sphereSize);
 
@@ -118,7 +130,13 @@ public class JeniedVisual1 extends Visual {
         translate(spinX, spinY, 0); 
         rotateX(angle); 
         sphere(30); 
- 
+        
+        // Draw a ring around the last sphere
+        float ringRadius = 40; 
+        float ringThickness = 300;
+        ellipse(0, 0, ringRadius * 2, ringRadius * 2); // Draw ring
+        stroke(100);
+
         popMatrix();
         popMatrix();
         popMatrix(); // Restore original transformation
