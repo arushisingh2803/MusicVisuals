@@ -6,6 +6,7 @@ import ddf.minim.analysis.FFT;
 import example.AudioBandsVisual;
 import example.WaveForm;
 
+
 public abstract class Visual extends PApplet
 {
 	private int frameSize = 512;
