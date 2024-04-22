@@ -42,7 +42,7 @@ public class JeniedVisual2 extends Visual {
         for (int i = 0; i < numDots; i++) {
             dotAngles[i] = random(TWO_PI); // Random initial angle for each dot
         }
-       
+
         pupilSize = 1;
         pupilRadii = new float[numDots];
 
@@ -64,6 +64,8 @@ public class JeniedVisual2 extends Visual {
         // Draw the spiral
         drawSpiral(amplitude);
 
+        // Draw the eye
+        drawEye(amplitude);
     }
 
     void drawSpiral(float amplitude) {
@@ -101,9 +103,9 @@ public class JeniedVisual2 extends Visual {
         strokeWeight(2);
         noFill();
         ellipse(eyeX, eyeY, 1350, 800); // Eye outline
-
-       
+  
     }
+
 
 
 }
