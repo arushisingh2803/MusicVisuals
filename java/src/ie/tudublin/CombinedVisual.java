@@ -56,7 +56,7 @@ public class CombinedVisual extends Visual {
                 as2.render();
                 break;
             case '3':
-                js1.render();
+                as1.render();
                 break;
             default:
                 break;

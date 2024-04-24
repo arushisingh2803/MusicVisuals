@@ -2,39 +2,28 @@ package c22359751;
 
 import processing.core.PApplet;
 import ie.tudublin.CombinedVisual;
-import processing.core.PImage;
+import processing.core.*;
 
 public class ArushiVisual2 extends PApplet {
 
     CombinedVisual cv;
     PImage albumCover;
+    float angleOffset;
+    int numLines; 
 
     public ArushiVisual2(CombinedVisual cv) {
         this.cv = cv;
         albumCover = cv.loadImage("images/cover.png");
-        albumCover.resize(width * 2 / 3, height); // Resize the image once during initialization
-    }
-
-    public void settings() {
-        //cv.size(1024, 500);
-        // Use this to make fullscreen
-        println("CWD: " + System.getProperty("user.dir"));
-        cv.fullScreen();
-        // Use this to make fullscreen and use P3D for 3D graphics
-        cv.fullScreen(P3D, SPAN);
-    }
-
-    public void setup() {
-        cv.startMinim();
-        cv.loadAudio("meetmehalfway.mp3");
+        albumCover.resize(cv.width * 2 / 3, cv.height); 
+        angleOffset = 0;
+        numLines = 30;
+ 
     }
 
     public void render() { 
         cv.calculateAverageAmplitude();
         cv.background(0);
         cv.colorMode(HSB, 360, 100, 100);
-        float angleOffset = 0;
-        int numLines = 30; 
     
         float amplitude = cv.getSmoothedAmplitude();
     
@@ -64,7 +53,7 @@ public class ArushiVisual2 extends PApplet {
         float hue = map(amplitude, 0, 1, 0, 360);
         cv.pushMatrix();
         cv.translate(0, 0, 1);
-        cv.imageMode(CENTER);
+        cv.imageMode(PApplet.CENTER);
         cv.tint(hue, 180, 180);
         cv.image(albumCover, cv.width / 2, cv.height / 2); 
         cv.popMatrix();
