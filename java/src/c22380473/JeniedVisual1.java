@@ -7,11 +7,6 @@ public class JeniedVisual1 extends PApplet {
 
     CombinedVisual cv;
 
-    // Constructor that takes a parameter of type CombinedVisual
-    public JeniedVisual1(CombinedVisual cv) {
-        this.cv = cv;
-    }
-
     int maxDots = 2000; 
     float[] dotX = new float[maxDots]; 
     float[] dotY = new float[maxDots]; 
@@ -23,30 +18,30 @@ public class JeniedVisual1 extends PApplet {
     float sphereSize = 0;
     float prevAmplitude = 0;
     float angle = 0;
+    
+
+    // Constructor that takes a parameter of type CombinedVisual
+    public JeniedVisual1(CombinedVisual cv) {
+        this.cv = cv;
+    }
 
     public void settings() {
         println("CWD: " + System.getProperty("user.dir"));
         cv.fullScreen(P3D, SPAN); 
     }
 
-    public void keyPressed() {
-        if (key == ' ') {
-            cv.getAudioPlayer().cue(0); 
-            cv.getAudioPlayer().play();
-        }
-    }
-
     public void setup() {
         cv.colorMode(HSB);
+        cv.setFrameSize(256);
         cv.startMinim(); 
-        cv.loadAudio("java/data/meetmehalfway.mp3"); 
     }
 
+  
     public void render() {
         cv.calculateAverageAmplitude(); 
         cv.background(0);
         cv.colorMode(HSB, 360, 100, 100);
-
+    
         float hue = cv.frameCount % 360;
         cv.noStroke();
         cv.fill(0, 100); 
@@ -83,7 +78,7 @@ public class JeniedVisual1 extends PApplet {
         // Calculate the amplitude of the audio signal
         float amplitude = cv.getSmoothedAmplitude(); 
 
-        sphereSize = cv.constrain(sphereSize, 190, 200); 
+        sphereSize = constrain(sphereSize, 190, 200); 
 
         // Rotate the centre sphere based on the amplitude 
         float rotationSpeed = map(amplitude, 0, 1, 0, TWO_PI);
@@ -95,7 +90,7 @@ public class JeniedVisual1 extends PApplet {
         cv.translate(cv.width / 2, cv.height / 2, 0); 
         cv.rotateY(angle);
         cv.noFill();
-        cv.stroke(frameCount % 360, 80, 100); 
+        cv.stroke(cv.frameCount % 360, 80, 100); 
 
         // Draw a ring to 2nd planet
         float mainRingRadius = 450; 
