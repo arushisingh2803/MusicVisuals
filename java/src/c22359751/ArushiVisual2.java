@@ -14,7 +14,7 @@ public class ArushiVisual2 extends PApplet {
     public ArushiVisual2(CombinedVisual cv) {
         this.cv = cv;
         albumCover = cv.loadImage("images/cover.png");
-        albumCover.resize(cv.width * 2 / 3, cv.height); // Resize the image once during initialization
+        albumCover.resize(cv.width * 2 / 3, cv.height); 
         angleOffset = 0;
         numLines = 30;
  
