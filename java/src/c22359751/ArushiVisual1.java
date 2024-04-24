@@ -7,7 +7,6 @@ public class ArushiVisual1 extends PApplet {
 
     CombinedVisual cv;
 
-    // Constructor that takes a parameter of type CombinedVisual
     public ArushiVisual1(CombinedVisual cv) {
         this.cv = cv;
     }
