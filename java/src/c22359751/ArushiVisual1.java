@@ -1,113 +1,115 @@
 package c22359751;
 
-import ie.tudublin.Visual;
+import processing.core.PApplet;
+import ie.tudublin.CombinedVisual;
+
+public class ArushiVisual1 extends PApplet {
+
+    CombinedVisual cv;
+
+    // Constructor that takes a parameter of type CombinedVisual
+    public ArushiVisual1(CombinedVisual cv) {
+        this.cv = cv;
+    }
 
 
-public class ArushiVisual1 extends Visual
-{ 
-
-    public void settings()
-    {
+    public void settings() {
+        //cv.size(1024, 500);
+        // Use this to make fullscreen
         println("CWD: " + System.getProperty("user.dir"));
-        fullScreen(P3D, SPAN);
+        cv.fullScreen();
+        // Use this to make fullscreen and use P3D for 3D graphics
+        cv.fullScreen(P3D, SPAN);
     }
 
-    public void keyPressed()
-    {
-        if (key == ' ')
-        {
-            getAudioPlayer().cue(0);
-            getAudioPlayer().play();
-            
-        }
+    public void setup() {
+        cv.startMinim();
+        cv.loadAudio("meetmehalfway.mp3"); // Adjust audio file name as needed
     }
 
-    public void setup()
-    {
-        colorMode(HSB);
-        setFrameSize(256);
-        startMinim();
-        loadAudio("java/data/meetmehalfway.mp3");     
-    }
+    public void render() {
+        cv.calculateAverageAmplitude();
+        cv.background(0);
+        cv.colorMode(HSB, 360, 100, 100);
 
-    public void draw() {
-        calculateAverageAmplitude();
-        calculateFrequencyBands();
-        background(0);
-        colorMode(HSB, 360, 100, 100);
-        float hue = frameCount % 360;
-        stroke(hue, 80, 80);
-        fill(hue, 80, 80);
-        camera(0, 0, 0, 0, 0, -1, 0, 1, 0);
-        translate(0, 0, -250);
+        float hue = cv.frameCount % 360;
+        cv.stroke(hue, 80, 80);
+        cv.fill(hue, 80, 80);
+        cv.camera(0, 0, 0, 0, 0, -1, 0, 1, 0);
+        cv.translate(0, 0, -250);
 
-        float scale = 0.3f; 
-        float[] bands = getSmoothedBands();
+        float scale = 0.3f;
+        float[] bands = cv.getSmoothedBands();
 
-        //waves on the x-axis
-        noFill();
+        // Waves on the x-axis
+        cv.noFill();
         for (int i = 0; i < 4; i++) { // Number of waves
-            float waveX = i * 20 + frameCount * bands.length; // Adjust speed of waves
-            stroke(360); 
-            beginShape();
-            for (float x = -150; x < 150; x += 2) {
-                float y = sin(x * bands.length + waveX) * 10 * sin(frameCount * bands.length); // Adjust amplitude and frequency
-                vertex(x, y, -10);
+            float waveX = i * 20 + cv.frameCount * bands.length; // Adjust speed of waves
+            cv.stroke(360);
+            cv.beginShape();
+            for (float x = -cv.width / 2; x < cv.width / 2; x += 2) { // Adjust for full width
+                float y = sin(x * bands.length + waveX) * 10 * sin(cv.frameCount * bands.length); // Adjust amplitude and frequency
+                cv.vertex(x, y, -10);
             }
-            endShape();
+            cv.endShape();
         }
 
-        //waves on the y-axis
-        noFill();
+        // Waves on the y-axis
+        cv.noFill();
         for (int i = 0; i < 2; i++) { // Number of waves
-            float waveY = i * 20 + frameCount * getSmoothedAmplitude(); // Adjust speed of waves
-            stroke(hue, 80, 80);
-            beginShape();
+            float waveY = i * 20 + cv.frameCount * cv.getSmoothedAmplitude(); // Adjust speed of waves
+            cv.stroke(hue, 80, 80);
+            cv.beginShape();
             for (float y = -150; y < 150; y += 2) {
-                float x = sin(y * getSmoothedAmplitude() + waveY) * 10 * sin(frameCount * getSmoothedAmplitude()); // Adjust amplitude and frequency
-                vertex(x, y);
+                float x = sin(y * cv.getSmoothedAmplitude() + waveY) * 10 * sin(cv.frameCount * cv.getSmoothedAmplitude()); // Adjust amplitude and frequency
+                cv.vertex(x, y);
             }
-            endShape();
+            cv.endShape();
         }
 
-        //function to draw the heart
+        // Function to draw the heart
         drawHeart(scale);
-
-    } 
-
+        drawGrid();
+    }
 
     private void drawHeart(float scale) {
+        float hue = cv.frameCount % 360;
+        cv.stroke(hue, 80, 80);
+        cv.fill(hue, 80, 80);
 
-        float hue = frameCount % 360;
-        stroke(hue, 80, 80);
-        fill(hue, 80, 80);
-        
-
-        //first half of the heart
-        beginShape();
+        // First half of the heart
+        cv.beginShape();
         for (float a = 0; a < PI; a += 0.01) {
-            float r = 15;
-            float x = r * 16 * pow(sin(a), 3) * scale + (map(getSmoothedAmplitude(), 0, 1, 0, 255));
-            float y = -r*(13 * cos(a) - 5*cos(2*a) - 2*cos(3*a) - cos(4*a)) * scale;
-            vertex (x, y, -5);
+            float r = 20;
+            float x = r * 16 * pow(sin(a), 3) * scale + (map(cv.getSmoothedAmplitude(), 0, 1, 0, 255));
+            float y = -r * (13 * cos(a) - 5 * cos(2 * a) - 2 * cos(3 * a) - cos(4 * a)) * scale;
+            cv.vertex(x, y, -5);
         }
-        endShape ();
+        cv.endShape();
 
         // Draw second half of the heart
-        beginShape();
+        cv.beginShape();
         for (float a = 0; a < PI; a += 0.01) {
-            float r = 15;
-            float x = -r * 16 * pow(sin(a), 3) * scale - (map(getSmoothedAmplitude(), 0, 1, 0, 255));
+            float r = 20;
+            float x = -r * 16 * pow(sin(a), 3) * scale - (map(cv.getSmoothedAmplitude(), 0, 1, 0, 255));
             float y = -r * (13 * cos(a) - 5 * cos(2 * a) - 2 * cos(3 * a) - cos(4 * a)) * scale;
-            vertex(x, y, -5);
+            cv.vertex(x, y, -5);
         }
-        endShape();
+        cv.endShape();
     }
 
-    
-}           
+    private void drawGrid() {
+        float spacing = 20;
+        float gridWidth = cv.width * 2; // Adjust for fullscreen width
 
-            
+        // Draw vertical lines
+        for (float x = -gridWidth / 2; x < gridWidth / 2; x += spacing) {
+            cv.line(x, -gridWidth / 2, 0, x, gridWidth / 2, 0);
+        }
 
-
-
+        // Draw horizontal lines
+        for (float y = -gridWidth / 2; y < gridWidth / 2; y += spacing) {
+            cv.line(-gridWidth / 2, y, 0, gridWidth / 2, y, 0);
+        }
+    }
+}

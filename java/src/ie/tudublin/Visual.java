@@ -3,8 +3,6 @@ package ie.tudublin;
 import processing.core.PApplet;
 import ddf.minim.*;
 import ddf.minim.analysis.FFT;
-import example.AudioBandsVisual;
-import example.WaveForm;
 
 
 public abstract class Visual extends PApplet
