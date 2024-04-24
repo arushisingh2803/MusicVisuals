@@ -2,10 +2,12 @@ package ie.tudublin;
 
 import c22359751.ArushiVisual1;
 import c22359751.ArushiVisual2;
+import c22380473.JeniedVisual1;
 
 public class CombinedVisual extends Visual {
     ArushiVisual1 as1;
     ArushiVisual2 as2;
+    JeniedVisual1 js1;
     char visualSelected = ' ';
 
     public void settings() {
@@ -28,6 +30,7 @@ public class CombinedVisual extends Visual {
 
         as1 = new ArushiVisual1(this);
         as2 = new ArushiVisual2(this);
+        js1 = new JeniedVisual1(this);
     }
 
     public void keyPressed() {
@@ -48,6 +51,9 @@ public class CombinedVisual extends Visual {
                 break;
             case '2':
                 as2.render();
+                break;
+            case '3':
+                js1.render();
                 break;
             default:
                 break;
