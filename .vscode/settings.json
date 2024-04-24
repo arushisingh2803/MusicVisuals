@@ -1,6 +1,3 @@
 {
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "/Users/arushisingh/Documents/Processing/libraries/video/library/video.jar"
-    ]
+    "java.debug.settings.onBuildFailureProceed": true
 }
