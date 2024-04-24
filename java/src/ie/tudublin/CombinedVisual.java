@@ -12,7 +12,7 @@ public class CombinedVisual extends Visual {
         println("CWD: " + System.getProperty("user.dir"));
         size(1024, 500);
         // Use this to make fullscreen
-        // fullScreen();
+        fullScreen();
 
         // Use this to make fullscreen and use P3D for 3D graphics
         fullScreen(P3D, SPAN);

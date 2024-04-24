@@ -1,43 +1,40 @@
 package c22359751;
 
-import ie.tudublin.CombinedVisual;
 import processing.core.PApplet;
+import ie.tudublin.CombinedVisual;
 import processing.core.PImage;
 
 public class ArushiVisual2 extends PApplet {
 
     CombinedVisual cv;
-    int numLines = 30;
+    PImage albumCover;
 
-    // Constructor that takes a parameter of type CombinedVisual
     public ArushiVisual2(CombinedVisual cv) {
         this.cv = cv;
+        albumCover = cv.loadImage("images/cover.png");
+        albumCover.resize(width * 2 / 3, height); // Resize the image once during initialization
     }
 
     public void settings() {
+        //cv.size(1024, 500);
+        // Use this to make fullscreen
+        println("CWD: " + System.getProperty("user.dir"));
         cv.fullScreen();
+        // Use this to make fullscreen and use P3D for 3D graphics
         cv.fullScreen(P3D, SPAN);
     }
 
-    public void keyPressed() {
-        if (key == ' ') {
-            cv.getAudioPlayer().cue(0);
-            cv.getAudioPlayer().play();
-        }
-    }
-
     public void setup() {
-        cv.colorMode(HSB);
-        cv.setFrameSize(256);
         cv.startMinim();
-        cv.loadAudio("java/data/meetmehalfway.mp3");
+        cv.loadAudio("meetmehalfway.mp3");
     }
-
-    float angleOffset = 0;
 
     public void render() { 
         cv.calculateAverageAmplitude();
         cv.background(0);
+        cv.colorMode(HSB, 360, 100, 100);
+        float angleOffset = 0;
+        int numLines = 30; 
     
         float amplitude = cv.getSmoothedAmplitude();
     
@@ -45,7 +42,6 @@ public class ArushiVisual2 extends PApplet {
     
         // Lines moving in a circle
         cv.strokeWeight(2);
-        cv.colorMode(HSB, 360, 100, 100);
         float angleStep = TWO_PI / numLines;
         for (int i = 0; i < numLines; i++) {
             float angle = angleOffset + i * angleStep;
@@ -70,10 +66,8 @@ public class ArushiVisual2 extends PApplet {
         cv.translate(0, 0, 1);
         cv.imageMode(CENTER);
         cv.tint(hue, 180, 180);
-        // Load and resize the album cover using cv
-        PImage albumCover = cv.loadImage("java/data/cover.png");
-        albumCover.resize(cv.width * 2 / 3, cv.height);
-        cv.image(albumCover, cv.width / 2, cv.height / 2);
+        cv.image(albumCover, cv.width / 2, cv.height / 2); 
         cv.popMatrix();
     }
+    
 }
