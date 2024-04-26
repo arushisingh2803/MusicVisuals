@@ -10,87 +10,29 @@ C22359751
 C22380473
 C21331753
 
-## Instructions
-- Fork this repository and use it a starter project for your assignment
-- Create a new package named your student number and put all your code in this package.
-- You should start by creating a subclass of ie.tudublin.Visual
-- There is an example visualiser called MyVisual in the example package
-- Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
-
 # Description of the assignment
-We chose the song "Meet Me Halfway" by the Black-Eyed Peas because we felt as though it was a nice song to use, had a variety of beats with both slow and intense parts along with rap and a consistent beat. We also really liked the cover art for the 2009 album, "The End" which depicts a green skull. We thought it would be really interesting to implement and combine with the song along with other visuals.
+We chose the song "Meet Me Halfway" by the Black-Eyed Peas for our project. We felt as though there was a lot to work with within the song, whether it was the beat, the pace or the lyrics. We were also familiar with the song and upon our intial analysis of the song when we began this project, we agreed that the song rose and fell sufficiently to work with for our visuals.
 
+Some parts that stood out to us were the lyrics, the constantly changing pace and intensity and the cover art for the 2009 album, "The End" which depicts a green skull. We thought it would be really interesting to implement and combine with the song along with other visuals. 
+
+In this visual assignment, you will find visuals of a pulsing heart, a breaking heart, the cover art implemented as a visual, a spinning "The End" CD with surrounding synth strobe lights and a pair of eyes with moving, colour changing pupils that pulse to the beat, accompanied by "Game of Life" visuals.
 # Instructions
 Press SPACEBAR to run the code.
+Hit numbers from 1 to 6 to view the visuals!
+
 # How it works
+We used components of MyVisual such as the amplitude and frequency of the song to make our shapes or images react to the song. The visuals use this in real time as they are rendered when their respective key is pressed. All our visuals use various shapes that also visualise the lyrics of the song - whether it be a plants revolving around each other or heart split into half. This adds an even more immersive feel to our visuals.
 
-# What I am most proud of in the assignment
 
-# Markdown Tutorial
+# Arushi Singh: What I am most proud of in the assignment
 
-This is *emphasis*
 
-This is a bulleted list
+# Jenied Sayago: What I am most proud of in the assignment
 
-- Item
-- Item
 
-This is a numbered list
+# Tania Satavalekar: What I am most proud of in the assignment
+I am really proud of implementing a lot of my learning from this module into my code, I think it is really apparent in a lot of my major components.
 
-1. Item
-1. Item
+ The Game of Life code took me a while to do when I had done it for the labs but was the most memorable visual I had created. I really enjoyed that it looked like confetti or fireworks and so I found it to be perfect to implement into this project, I was hoping to incorporate it in some way or another. Additionally, the eyes were simply sketching out a pair of circles and mapping visuals and creating borders to bounce back and forth from but it came out in such a great way for my visuals.
 
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-This is an image using a relative URL:
-
-![An image](images/p8.png)
-
-This is an image using an absolute URL:
-
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
-
-This is a youtube video:
-
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
-
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-
+ As for my other visual, I am proud of my synth waves. They came out better than I had imagined and accompanied my spinning CD perfectly. The CD idea was in my head for a long time and I found myself making it so much more complicated than it had to be. A simple image I made transparent sufficed perfectly and overall both these effects really complimented each other.
