@@ -5,6 +5,7 @@ import c22359751.ArushiVisual2;
 import c22380473.JeniedVisual1;
 import c22380473.JeniedVisual2;
 import c21331753.TaniaVisual1;
+import c21331753.TaniaVisual2;
 
 public class CombinedVisual extends Visual {
     ArushiVisual1 as1;
@@ -12,6 +13,7 @@ public class CombinedVisual extends Visual {
     JeniedVisual1 js1;
     JeniedVisual2 js2;
     TaniaVisual1 ts1;
+    TaniaVisual2 ts2;
 
     char visualSelected = ' ';
 
@@ -38,6 +40,7 @@ public class CombinedVisual extends Visual {
         js1 = new JeniedVisual1(this);
         js2 = new JeniedVisual2(this);
         ts1 = new TaniaVisual1(this);
+        ts2 = new TaniaVisual2(this);
     }
 
     public void keyPressed() {
@@ -67,6 +70,9 @@ public class CombinedVisual extends Visual {
                 break;
             case '5':
                 ts1.render();
+                break;
+            case '6':
+                ts2.render();
                 break;
             default:
                 break;
