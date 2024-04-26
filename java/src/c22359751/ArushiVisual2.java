@@ -1,8 +1,8 @@
 package c22359751;
 
-import processing.core.PApplet;
 import ie.tudublin.CombinedVisual;
-import processing.core.*;
+import processing.core.PApplet;
+import processing.core.PImage;
 
 public class ArushiVisual2 extends PApplet {
 
@@ -50,10 +50,10 @@ public class ArushiVisual2 extends PApplet {
     
         cv.blendMode(BLEND);
     
-        float hue = map(amplitude, 0, 1, 0, 360);
         cv.pushMatrix();
         cv.translate(0, 0, 1);
         cv.imageMode(PApplet.CENTER);
+        float hue = cv.frameCount % 360;
         cv.tint(hue, 180, 180);
         cv.image(albumCover, cv.width / 2, cv.height / 2); 
         cv.popMatrix();

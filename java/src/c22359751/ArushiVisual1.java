@@ -84,7 +84,7 @@ public class ArushiVisual1 extends PApplet {
         cv.beginShape();
         for (float a = 0; a < PI; a += 0.01) {
             float r = 40;
-            float x = centerX + r * 16 * pow(sin(a), 3) * scale + (map(cv.getSmoothedAmplitude(), 0, 1, 0, 255));
+            float x = centerX + r * 16 * pow(sin(a), 3) * scale + (map(cv.getSmoothedAmplitude()*2, 0, 1, 0, 255));
             float y = centerY - r * (13 * cos(a) - 5 * cos(2 * a) - 2 * cos(3 * a) - cos(4 * a)) * scale;
             cv.vertex(x, y, -5);
         }
@@ -94,7 +94,7 @@ public class ArushiVisual1 extends PApplet {
         cv.beginShape();
         for (float a = 0; a < PI; a += 0.01) {
             float r = 40;
-            float x = centerX - r * 16 * pow(sin(a), 3) * scale - (map(cv.getSmoothedAmplitude(), 0, 1, 0, 255));
+            float x = centerX - r * 16 * pow(sin(a), 3) * scale - (map(cv.getSmoothedAmplitude()*2, 0, 1, 0, 255));
             float y = centerY - r * (13 * cos(a) - 5 * cos(2 * a) - 2 * cos(3 * a) - cos(4 * a)) * scale;
             cv.vertex(x, y, -5);
         }

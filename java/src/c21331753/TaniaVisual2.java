@@ -35,7 +35,7 @@ public class TaniaVisual2 extends PApplet {
         cv.noFill();
         float amplitude = cv.getSmoothedAmplitude();
         for (int i = 0; i < 360; i += 10) {
-            float hue = map(amplitude, 0, 1, 0, 255); // Map amplitude to hue
+            float hue = cv.frameCount % 360;
             cv.stroke(hue, 255, 255);
             float x = halfWidth + cos(radians(i)) * circleSize;
             float y = halfHeight + sin(radians(i)) * circleSize;
