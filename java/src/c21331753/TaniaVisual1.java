@@ -29,7 +29,7 @@ public class TaniaVisual1 extends PApplet {
     @Override
     public void setup() {
         minim = new Minim(this);
-        audioPlayer = minim.loadFile("tomp3.cc - 08 PsychNerD and Marco G  More Cowbell.mp3");
+        audioPlayer = minim.loadFile("java/data/meetmehalfway.mp3");
         audioPlayer.play();
         audioBuffer = audioPlayer.mix;
 
